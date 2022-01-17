@@ -5,15 +5,16 @@ import Time "mo:base/Time";
 
 actor {
     private type Message = {
-        text : Text;
+    
         time : Time.Time;
+        text : Text;
     };
 
     private type Microblog = actor{
         follow: shared (Principal) -> async ();
         follows: shared query() -> async [Principal];
         post: shared (Text) -> async ();
-        posts: shared query (Time.Time) -> async [Message];
+        posts: shared query (Time.Time) -> async [Message]; 
         timeline: shared (Time.Time) -> async [Message];
     };
 
